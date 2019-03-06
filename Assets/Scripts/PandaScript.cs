@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//THIS SCRIPT VERSION IS AT THE END OF CHAPTER 5
+//THIS SCRIPT VERSION IS AT THE END OF CHAPTER 6 (FIRST IMPLEMENTATION OF WAYPOINTS)
 public class PandaScript : MonoBehaviour
 {
 
@@ -21,14 +21,64 @@ public class PandaScript : MonoBehaviour
     //Private variable to store the rigidbody2D
     private Rigidbody2D rb2D;
 
+
+    //Private static variable to store the Game Manager
+    private static GameManagerScript gameManager;
+
+    //Private counter for the waypoints
+    private int currentWaypointNumber;
+
+    //Private constant under which a waypoint is considered reached
+    private const float changeDist = 0.001f;
+
     // Use this for initialization
     void Start()
     {
+        //If the reference to the Game Manager is missing, the script gets it
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManagerScript>();
+        }
+
         //Get the reference to the Animator
         animator = GetComponent<Animator>();
 
         //Get the reference to the Rigidbody2d
         rb2D = GetComponent<Rigidbody2D>();
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    void FixedUpdate()
+    {
+        //if the panda has reached the cake, then it will eat it, by triggering the right animation,
+        //and remove this script, since the State Machine Behaviour will take care of removing the Panda
+        if (currentWaypointNumber == gameManager.waypoints.Length)
+        {
+            animator.SetTrigger(AnimEatTriggerHash);
+            Destroy(this);
+            return;
+        }
+
+        //Calculate the distance between the Panda and the waypoint that the Panda is moving towards
+        float dist = Vector2.Distance(transform.position, gameManager.waypoints[currentWaypointNumber]);
+
+        //If the waypoint is considered reached because below the threshold of the constant changeDist
+        //the counter of waypoints is increased, otherwise the Panda moves towards the waypoint
+        if (dist <= changeDist)
+        {
+            currentWaypointNumber++;
+        }
+        else
+        {
+            MoveTowards(gameManager.waypoints[currentWaypointNumber]);
+        }
     }
 
     //Function that based on the speed of the Panda makes it moving towards the destination point, specified as Vector3
@@ -64,15 +114,9 @@ public class PandaScript : MonoBehaviour
         //Check if the other object is a projectile
         if (other.tag == "Projectile")
         {
-            Debug.Log("OnTrigger");
             //Apply damage to this panda with the Hit function
             Hit(other.GetComponent<ProjectileScript>().damage);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("OnCollision");
     }
 
 }
