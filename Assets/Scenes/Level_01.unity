@@ -418,7 +418,7 @@ MonoBehaviour:
   pandaPrefab: {fileID: 4190851597437693316, guid: de598ec7f72244a68b5d816d15e8781b,
     type: 3}
   numberOfWaves: 2
-  numberOfPandasPerWave: 2
+  numberOfPandasPerWave: 5
 --- !u!4 &551089154
 Transform:
   m_ObjectHideFlags: 0
@@ -734,6 +734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pink_Sprinkle_Projectile_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 100081066281325873, guid: 04d6bb696277e41408a53f90d8deccbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 687434696397069191, guid: 04d6bb696277e41408a53f90d8deccbe,
         type: 3}
@@ -1639,6 +1644,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1992446854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992446855}
+  m_Layer: 0
+  m_Name: Spawning Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992446855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992446854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -49.1, y: 8.7, z: -1.2605407}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2146911939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sweet-Tooth_Panda
       objectReference: {fileID: 0}
+    - target: {fileID: 4190851597437693316, guid: de598ec7f72244a68b5d816d15e8781b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4190851597437693319, guid: de598ec7f72244a68b5d816d15e8781b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1806,7 +1846,7 @@ PrefabInstance:
     - target: {fileID: 2934120978829360252, guid: de598ec7f72244a68b5d816d15e8781b,
         type: 3}
       propertyPath: cakeEatenPerBite
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de598ec7f72244a68b5d816d15e8781b, type: 3}

@@ -65,6 +65,9 @@ public class CupcakeTowerScript : MonoBehaviour
             //Check if there is at least one gameObject found
             if (hitColliders.Length != 0)
             {
+                Debug.Log("hitColliders.Length != 0");
+
+
                 //Loop over all the gameObjects to identify the closest to the Cupcake Tower
                 float min = int.MaxValue;
                 int index = -1;
@@ -74,6 +77,10 @@ public class CupcakeTowerScript : MonoBehaviour
                     if (hitColliders[i].tag == "Enemy")
                     {
                         float distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
+
+                        Debug.Log("distance=" + distance.ToString());
+                        Debug.Log("min=" + min.ToString());
+
                         if (distance < min)
                         {
                             index = i;
@@ -81,6 +88,9 @@ public class CupcakeTowerScript : MonoBehaviour
                         }
                     }
                 }
+
+                Debug.Log(index);
+
                 if (index == -1)
                     return;
 
@@ -91,6 +101,8 @@ public class CupcakeTowerScript : MonoBehaviour
                 //Create the Projectile
                 GameObject projectile = GameObject.Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
                 projectile.GetComponent<ProjectileScript>().direction = direction;
+
+                Debug.Log("Instantiate");
             }
         }
         elapsedTime += Time.deltaTime;

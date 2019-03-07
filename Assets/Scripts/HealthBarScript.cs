@@ -39,6 +39,5 @@ public class HealthBarScript : MonoBehaviour {
         float percentage = health * 1f / maxHealth;
         //Assign the percentage to the fillingAmount variable of the "Health_Bar_Filling"
         fillingImage.fillAmount = percentage;
-        Debug.Log(fillingImage.fillAmount);
     }
 }

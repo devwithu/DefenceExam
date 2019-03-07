@@ -16,13 +16,12 @@ public class GameManagerScript : MonoBehaviour
     {
         //Get the reference to the Player's health
         playerHealth = FindObjectOfType<HealthBarScript>();
+
+        spawner = GameObject.Find("Spawning Spot").transform;
+
+        StartCoroutine("WavesSpawner");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     //**************************PLACING TOWER REGION***********************
