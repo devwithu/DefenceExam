@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2911565630502365019}
   - component: {fileID: 5533479763997934653}
   - component: {fileID: 6672538092686180876}
+  - component: {fileID: 3743991507154444217}
   m_Layer: 0
   m_Name: Sprinkles_Cupcake_Tower_0
   m_TagString: Untagged
@@ -87,11 +88,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7844506038494053846}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95668b9f406760d4cb6cf9394b43541e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialCost: 10
+  upgradingCost: 15
+  sellingValue: 5
   isUpgradable: 1
   upgradeSprites:
   - {fileID: 21300000, guid: 5674de9c1ad305c4ca47513976d9f8fb, type: 3}
@@ -101,3 +105,15 @@ MonoBehaviour:
   reloadTime: 3
   projectilePrefab: {fileID: 100081066281325873, guid: 04d6bb696277e41408a53f90d8deccbe,
     type: 3}
+--- !u!114 &3743991507154444217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844506038494053846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1338faff7710b174799160943f7cb5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

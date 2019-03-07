@@ -8,6 +8,9 @@ public class SugarMeterScript : MonoBehaviour {
     private int sugar; //Amount of sugar that the player possesses
 
 	void Start () {
+
+        sugar = 100;
+
         //Get the reference to the Sugar_Meter_Text
         sugarMeter = GetComponentInChildren<Text>();
         //Update the Sugar Meter graphic 

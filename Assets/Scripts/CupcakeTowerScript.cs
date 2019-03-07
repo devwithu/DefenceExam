@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//SCRIPT VERSION - END OF CHAPTER 2
-public class CupcakeTowerScript : MonoBehaviour {
+public class CupcakeTowerScript : MonoBehaviour
+{
+
+
+    public int initialCost;   // How much this tower costs when it is bought
+    public int upgradingCost; // How much this tower costs when it is upgraded
+    public int sellingValue;  // How much this tower is valuable if sold
 
     //Boolean to check if the tower is upgradable
     public bool isUpgradable = true;
 
     private int upgradeLevel;        //Level of the Cupcake Tower
     public Sprite[] upgradeSprites; //Different sprites for the different levels of the Cupcake Tower
-    public void Upgrade() {
+    public void Upgrade()
+    {
         //Check if the tower is upgradable
-        if (!isUpgradable) {
+        if (!isUpgradable)
+        {
             return;
         }
 
@@ -19,7 +26,8 @@ public class CupcakeTowerScript : MonoBehaviour {
         upgradeLevel++;
 
         //Check if the tower has reached its last level
-        if(upgradeLevel < upgradeSprites.Length) {
+        if (upgradeLevel < upgradeSprites.Length)
+        {
             isUpgradable = false;
         }
 
@@ -29,6 +37,12 @@ public class CupcakeTowerScript : MonoBehaviour {
 
         //Change graphics of the tower
         GetComponent<SpriteRenderer>().sprite = upgradeSprites[upgradeLevel];
+
+        //Increase the value of the tower;
+        sellingValue += 5;
+
+        //Increase the upgrading cost
+        upgradingCost += 10;
     }
 
     public float rangeRadius;           //Maximum distance that the Cupcake Tower can shoot
@@ -38,8 +52,10 @@ public class CupcakeTowerScript : MonoBehaviour {
     private float elapsedTime;          //Time elapsed from the last time the Cupcake Tower has shot
 
     //Implements the shooting logic
-    void Update () {
-        if (elapsedTime >= reloadTime) {
+    void Update()
+    {
+        if (elapsedTime >= reloadTime)
+        {
             //Reset elapsed Time
             elapsedTime = 0;
 
@@ -47,15 +63,19 @@ public class CupcakeTowerScript : MonoBehaviour {
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, rangeRadius);
 
             //Check if there is at least one gameObject found
-            if (hitColliders.Length != 0) {
+            if (hitColliders.Length != 0)
+            {
                 //Loop over all the gameObjects to identify the closest to the Cupcake Tower
                 float min = int.MaxValue;
                 int index = -1;
 
-                for (int i = 0; i < hitColliders.Length; i++) {
-                    if (hitColliders[i].tag == "Enemy") {
+                for (int i = 0; i < hitColliders.Length; i++)
+                {
+                    if (hitColliders[i].tag == "Enemy")
+                    {
                         float distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
-                        if (distance < min) {
+                        if (distance < min)
+                        {
                             index = i;
                             min = distance;
                         }
@@ -77,8 +97,9 @@ public class CupcakeTowerScript : MonoBehaviour {
     }
 
     //Function called when the player clicks on the Cupcake Tower
-    void OnMouseDown() {
+    void OnMouseDown()
+    {
         //Assign this tower as the active tower for trading operations
-        //TradeCupcakeTowers.setActiveTower(this);
+        TradeCupcakeTowers.setActiveTower(this);
     }
 }
