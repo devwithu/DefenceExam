@@ -20,10 +20,6 @@ public abstract class TradeCupcakeTowers : MonoBehaviour, IPointerClickHandler {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     // Static function that allows other scripts to assign the new/current selected tower
     public static void setActiveTower(CupcakeTowerScript cupcakeTower) {

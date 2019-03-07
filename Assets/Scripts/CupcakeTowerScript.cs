@@ -101,5 +101,6 @@ public class CupcakeTowerScript : MonoBehaviour
     {
         //Assign this tower as the active tower for trading operations
         TradeCupcakeTowers.setActiveTower(this);
+        Debug.Log("TradeCupcakeTowers.setActiveTower");
     }
 }
