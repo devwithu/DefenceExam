@@ -12,6 +12,9 @@ public class PandaScript : MonoBehaviour
     public float speed;     //The movement speed
     public float health;    //The amount of health
 
+    public int cakeEatenPerBite;
+
+
     //Hash representations of the Triggers of the Animator controller of the Panda
     private int AnimDieTriggerHash = Animator.StringToHash("DieTrigger");
     private int AnimHitTriggerHash = Animator.StringToHash("HitTrigger");
@@ -62,6 +65,7 @@ public class PandaScript : MonoBehaviour
         if (currentWaypointNumber == gameManager.waypoints.Length)
         {
             animator.SetTrigger(AnimEatTriggerHash);
+            gameManager.BiteTheCake(cakeEatenPerBite);
             Destroy(this);
             return;
         }
@@ -101,6 +105,7 @@ public class PandaScript : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger(AnimDieTriggerHash);
+            gameManager.OneMorePandaInHeaven();
         }
         else
         {

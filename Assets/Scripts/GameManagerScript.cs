@@ -102,6 +102,8 @@ public class GameManagerScript : MonoBehaviour
     //Moreover, it monitors the player's health to trigger the GameOver function when needed
     public void BiteTheCake(int damage)
     {
+        Debug.Log(damage);
+
         //Apply damage to the player and retrive a boolean to see if the cake has been eaten all
         bool IsCakeAllEaten = playerHealth.ApplyDamage(damage);
         //If the cake has been eaten all, the GameOver function is called in "losing mode"
